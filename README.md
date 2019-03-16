@@ -21,6 +21,6 @@ Console.WriteLine(x);
 rzuć okiem na strone [link](https://e.wsei.edu.pl/course/view.php?id=551) i ....
 
 
-| xxx | | yyy |
-|-----| |-----|
-|  1  | |  2  |
+| xxx | yyy |
+|-----|-----| 
+|  1  |  2  |
