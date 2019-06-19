@@ -33,5 +33,10 @@ namespace GraGUI
 
             g = new Gra( zakresOd, zakresDo );
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
