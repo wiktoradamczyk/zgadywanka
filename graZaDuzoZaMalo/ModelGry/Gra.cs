@@ -5,47 +5,57 @@ namespace ModelGry
 {
     public partial class Gra
     {
-        // typy
-        public enum Odp { ZaMalo = -1, Trafiono = 0, ZaDuzo = +1 };
-        public enum StanGry { Trwa, Poddana, Odgadnieta };
+        // inner types
+        public enum Odpowiedz { ZaMalo = -1, Trafiono = 0, ZaDuzo = 1 }
+        public enum StanGry { Trwa, Odgadnieta, Poddana }
 
-        // pola
-        private readonly int wylosowana;
-        public readonly int ZakresOd, ZakresDo;
+        // fields
         public StanGry Stan { get; private set; }
-        public int LicznikRuchow { get; private set; }  = 0;
-        
-        //ToDo: historia rozgrywki
+        public readonly int ZakresOd, ZakresDo;
 
-        public Gra(int min, int max)
+        // -----------------
+        private readonly int wylosowana;
+        public int Wylosowana
         {
-            ZakresOd = min;
-            ZakresDo = max;
+            get
+            {
+                // if gra poddana lub zakończona
+                return wylosowana;
+            }
+            //set { }
+        }
+        // -------------------
+
+
+        // historia gry ToDo
+        public int LicznikRuchow { get; private set; } = 0;
+
+
+        // constructors
+        public Gra(int a, int b)
+        {
+            ZakresOd = Math.Min(a, b);
+            ZakresDo = Math.Max(a, b);
+            //losowanie
             wylosowana = Losuj(ZakresOd, ZakresDo);
             Stan = StanGry.Trwa;
-            Historia = new List<Ruch>();
-        }
-        private int Losuj(int min = 1, int max = 100)
-        {
-            Random generator = new Random();
-            int los = generator.Next(min, max + 1);
-            return los;
+            historia = new List<Ruch>();
         }
 
-        public Odp Ocena(int propozycja)
+        public Odpowiedz Ocena(int propozycja)
         {
             LicznikRuchow++;
-            Odp odp;
+            Odpowiedz odp;
             if (propozycja < wylosowana)
-                odp = Odp.ZaMalo;
+                odp = Odpowiedz.ZaMalo;
             else if (propozycja > wylosowana)
-                odp = Odp.ZaDuzo;
-            else // ==
+                odp = Odpowiedz.ZaDuzo;
+            else
             {
                 Stan = StanGry.Odgadnieta;
-                odp = Odp.Trafiono;
+                odp = Odpowiedz.Trafiono;
             }
-            Historia.Add(new Ruch(propozycja, odp));
+            historia.Add(new Ruch(propozycja, odp));
             return odp;
         }
 
@@ -54,12 +64,16 @@ namespace ModelGry
             Stan = StanGry.Poddana;
         }
 
-        public int? CoByloWylosowane()
+        public static int Losuj(int a = 1, int b = 100)
         {
-            if( Stan != StanGry.Trwa )
-                return wylosowana;
-
-            return null;
+            if (a > b)
+            {//swap a<-->b
+                int tmp = a;
+                a = b;
+                b = tmp;
+            }
+            Random generator = new Random();
+            return generator.Next(a, b + 1);
         }
 
     }

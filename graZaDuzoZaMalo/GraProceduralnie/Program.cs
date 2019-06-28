@@ -4,100 +4,101 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GraProceduralnie
+namespace GraMonolitycznie
 {
     class Program
     {
         /// <summary>
-        /// Wczytuje dane (liczba całkowita) z konsoli. Jeśli 'x' zgłasza wyjątek
+        /// Generuje liczbę pseudolosową z podanego zakresu
         /// </summary>
-        /// <param name="prompt">Tekst zachęty wyświetlany uzytkownikowi</param>
-        /// <returns>liczba odczytana ze standardowego wejscia</returns>
-        /// <exception cref="InvalidOperationException">gdy użytkownik poda znak X</exception>
-        private static int WczytajDane(string prompt = "Podaj liczbę lub X jeśli koniec: ")
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        static int Losuj( int a = 1, int b = 100 )
+        {
+            if( a > b )
+            {//swap a<-->b
+                int tmp = a;
+                a = b;
+                b = tmp;
+            }
+            Random generator = new Random();
+            return generator.Next(a, b+1);
+        }
+
+        static int WczytajLiczbe(string prompt = "Podaj liczbę (lub X by zakończyć: ")
         {
             int propozycja = 0;
-            do
+            while (true)
             {
                 Console.Write(prompt);
                 string tekst = Console.ReadLine();
                 if (tekst.ToLower() == "x")
-                    throw new InvalidOperationException();
+                    throw new OperationCanceledException("wprowadzono X");
                 try
                 {
-                    propozycja = Convert.ToInt32(tekst); // int.Parse(tekst)
+                    propozycja = Convert.ToInt32(tekst);
                     break;
                 }
                 catch (FormatException)
                 {
-                    Console.WriteLine("Nie podano liczby! Spróbuj jeszcze raz.");
+                    Console.WriteLine("Nie podano liczby!");
+                    continue;
                 }
                 catch (OverflowException)
                 {
-                    Console.WriteLine("Liczba nie mieści się w rejestrze! Spróbuj jeszcze raz.");
+                    Console.WriteLine("Liczba nie mieści się w rejestrze!");
+                    continue;
                 }
             }
-            while ( true );
-
             return propozycja;
         }
 
-        private static int Losuj(int min = 1, int max = 100)
-        {
-            Random generator = new Random();
-            int wylosowana = generator.Next(min, max+1);
-            return wylosowana;
-        }
-
-        private static int wylosowana = 0;
-
-        private static string Ocena( int propozycja )
+        static string Ocena( int propozycja )
         {
             if (propozycja < wylosowana)
                 return "za mało";
             else if (propozycja > wylosowana)
                 return "za dużo";
             else
-            {
                 return "trafiono";
-            }
         }
 
-        public static void Main(string[] args)
-        {
-            // 1. Komputer losuje liczbę
-            wylosowana = Losuj( ); // może być zgłoszony wyjatek, gdy min > max
-            Console.WriteLine("Wylosowałem liczbę od 1 do 100. \n Odgadnij ją");
+        static int wylosowana = 0;
 
+        static void Main(string[] args)
+        {
+            int min = WczytajLiczbe("Podaj dolny zakres: ");
+            int max = WczytajLiczbe("Podaj górny zakres: ");
+            wylosowana = Losuj(min, max);
+            Console.WriteLine($"Wylosowałem liczbę od {min} do {max}. \n Odgadnij ją");
 #if(DEBUG)
             Console.WriteLine(wylosowana);
 #endif
-
-            //wykonuj
-            int propozycja = 0;
             do
             {
+                int propozycja = 0;
                 try
                 {
-                    propozycja = WczytajDane("Podaj swoją propozycję (X - gdy koniec)");
+                    propozycja = WczytajLiczbe("Podaj swoją propozycję: ");
                 }
-                catch(InvalidOperationException)
+                catch(OperationCanceledException)
                 {
-                    Console.WriteLine("Szkoda, że kończymy. Do widzenia.");
+                    Console.WriteLine("Wyjście awaryjne. Do widzenia");
                     return;
                 }
 
                 Console.WriteLine($"Przyjąłem wartość {propozycja}");
 
-                string ocena = Ocena(propozycja);
-                Console.WriteLine( ocena );
-                if (ocena == "trafiono")
+                string wynik = Ocena(propozycja);
+                Console.WriteLine(wynik);
+                if (wynik == "trafiono")
                     break;
             }
-            while ( true );
-            //do momentu trafienia
+            while (true);
 
             Console.WriteLine("Koniec gry");
         }
     }
 }
+

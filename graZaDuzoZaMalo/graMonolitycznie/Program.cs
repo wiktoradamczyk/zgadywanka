@@ -4,18 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace graMonolitycznie
+namespace GraMonolitycznie
 {
     class Program
     {
         static void Main(string[] args)
         {
-
+            /*
             Console.WriteLine("Witaj!");
-            Console.Write("Podaj Swoje imię: ");
+            Console.Write("Podaj swoje imię: ");
             string x = Console.ReadLine();
             Console.WriteLine($"Witaj, {x}");
-            
+            */
+
             // 1. Komputer losuje liczbę
             Random generator = new Random();
             int wylosowana = generator.Next(1, 101);
@@ -67,11 +68,10 @@ namespace graMonolitycznie
                 }
                 #endregion
             }
-            while( !trafiono );
+            while (!trafiono);
             //do momentu trafienia
 
             Console.WriteLine("Koniec gry");
-       
         }
     }
 }

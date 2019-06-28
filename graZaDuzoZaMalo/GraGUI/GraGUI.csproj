@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D0C7492F-1F8A-4042-86CB-C21D3A308776}</ProjectGuid>
+    <ProjectGuid>{145BCBB9-DD46-4C80-854A-6C7D53E025FE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>GraGUI</RootNamespace>
     <AssemblyName>GraGUI</AssemblyName>
@@ -81,7 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModelGry\ModelGry.csproj">
-      <Project>{23f2d85d-bff8-490b-b88a-a550c160e2a5}</Project>
+      <Project>{3b18a9fc-974f-4e78-9d5c-3655f94deb9f}</Project>
       <Name>ModelGry</Name>
     </ProjectReference>
   </ItemGroup>

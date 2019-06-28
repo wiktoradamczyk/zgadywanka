@@ -5,12 +5,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{27B5D823-BE94-42F9-B600-A51EA3E391E5}</ProjectGuid>
+    <ProjectGuid>{CB1DF023-7F17-4535-8547-E0F8F4B8FF94}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UnitTestProjectModelGry</RootNamespace>
     <AssemblyName>UnitTestProjectModelGry</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
@@ -57,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModelGry\ModelGry.csproj">
-      <Project>{23f2d85d-bff8-490b-b88a-a550c160e2a5}</Project>
+      <Project>{3b18a9fc-974f-4e78-9d5c-3655f94deb9f}</Project>
       <Name>ModelGry</Name>
     </ProjectReference>
   </ItemGroup>
