@@ -1,26 +1,44 @@
-# zgadywanka
-Projekt gry realizowany na zajęciach
+---
+Autor: K. Molenda
+Dta : 2019-03-17
+---
 
-## nagłowek poziomu 1
+# zgadywanka-lab5n
+Projekt realizowany na zajęciach z grupą Lab5n
 
-## nagłowek poziomu 2
+gfkl jgldjfgl dsfl gjldsfj gldsjfgl jdslfgj ldsfj g
+ dfdlsfg ldjsf gljdfs lgjdfls gjldsfj g
+  djgldfj gldfj gldjfl gjdfl gldfj ldjf gl
+  
+ghk gfd; hklf;kh ;fk gh;fk ;kgf ;hk
+fg h;gfk;h kg;f hk;gfk h;fkg
 
-### nagłowek poziomu 2.1
+## Rozdział 1.1
 
-blebleblebleblebleblebleblebleblebleblebleblebleblelbelbleb
+;dfgkj dfglhfjgdlh dflgj hldfgjl hj
+ gfdhgflgfj hldfl hdfl hldfj g
+  gfd;kh ;dgfk; 
+  
+- element 1
+- element **kolejny**
 
-ggaga `Console.writeline()` abc
+1. po pierwsze
+1. po ~~drugie~~
+
+dfl jdlsjfgl dfjsl gldfsg ldjs gf `int x = 1;` m g.dfmgdf g
+
+---
 
 ```csharp
 int x = 1;
-x = x + 2;
+int y = x + 2;
 Console.WriteLine(x);
 ```
 
+ds fkshf ks [kliknij tutaj](http://e.wsei.edu.pl) hdsk hkdsh gkdhsfk gds 
 
-rzuć okiem na strone [link](https://e.wsei.edu.pl/course/view.php?id=551) i ....
+| Lp. | Imie |
+|-----|------|
+| 1. | Krzysztof |
+| 2. | Anna |
 
-
-| xxx | yyy |
-|-----|-----| 
-|  1  |  2  |
