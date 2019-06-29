@@ -43,7 +43,7 @@ namespace GraGUI
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-          
+
 
         }
 
@@ -60,8 +60,8 @@ namespace GraGUI
         private void button1_Click(object sender, EventArgs e)
         {
             Gra.Odpowiedz odpowiedz;
-           odpowiedz = g.Ocena(int.Parse(textBox1.Text));
-          
+            odpowiedz = g.Ocena(int.Parse(textBox1.Text));
+
 
             switch (odpowiedz)
             {
@@ -90,6 +90,27 @@ namespace GraGUI
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            g.Poddaj();
+
+            if (g.Stan == Gra.StanGry.Poddana)
+            {
+                DialogResult poddanie = MessageBox.Show("Poddałeś się!", "Poddanie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+
+                if (poddanie == DialogResult.OK)
+                {
+
+                    grpBoxLosowanie.Visible = true;
+
+                }
+
+
+            }
         }
     }
 }
